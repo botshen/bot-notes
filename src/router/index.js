@@ -9,7 +9,7 @@ import TrashDetail from '@/components/TrashDetail.vue'
 Vue.use(VueRouter)
 
 const routes = [
-    {
+     {
         path: '/',
         name: 'Home',
         component: Home

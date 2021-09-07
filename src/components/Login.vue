@@ -29,9 +29,19 @@
     </div>
 
   </div>
+  </div>
 </template>
 
 <script>
+
+import request from '@/helpers/request'
+
+request('/auth')
+    .then(data=>{
+      console.log(data)
+    })
+
+
 export default {
   data(){
     return {
@@ -74,6 +84,13 @@ export default {
       this.register.isError = false
       this.register.notice = ''
       console.log(`start register..., username: ${this.register.username} , password: ${this.register.password}`)
+      request('/auth/register', 'POST',
+          {
+            username: this.register.username,
+            password: this.register.password
+          }).then(data=>{
+        console.log(data)
+      })
     },
     onLogin(){
       if(!/^[\w\u4e00-\u9fa5]{3,15}$/.test(this.login.username)){
@@ -90,6 +107,14 @@ export default {
       this.login.notice = ''
 
       console.log(`start login..., username: ${this.login.username} , password: ${this.login.password}`)
+      request('/auth/login', 'POST',
+          {
+            username: this.login.username,
+            password: this.login.password
+          }).then(data=>{
+        console.log(data)
+      })
+
     }
   }
 }
@@ -116,7 +141,7 @@ export default {
 .modal-container {
   width: 800px;
   height: 500px;
-  margin: 0 auto;
+  margin: 0px auto;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
@@ -155,7 +180,7 @@ export default {
       cursor: pointer;
     }
     .login,.register {
-      padding: 0 20px;
+      padding: 0px 20px;
       border-top: 1px solid #eee;
       height: 0;
       overflow: hidden;
