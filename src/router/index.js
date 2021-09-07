@@ -1,41 +1,35 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from "../components/Login";
+import Router from 'vue-router'
+import HelloWorld from '@/components/HelloWorld'
+import Login from '@/components/Login'
 import Notebooks from '@/components/NotebookList.vue'
 import NoteDetail from '@/components/NoteDetail.vue'
 import TrashDetail from '@/components/TrashDetail.vue'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-const routes = [
-     {
-        path: '/',
-        name: 'Home',
-        component: Home
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'HelloWorld',
+      component: HelloWorld
     },
     {
-        path: '/login',
-        name: 'Login',
-        component: Login
-
+      path: '/login',
+      component: Login
     },
     {
-        path: '/notebooks',
-        component: Notebooks
+      path: '/notebooks',
+      component: Notebooks
     },
     {
-        path: '/note/:noteId',
-        component: NoteDetail
+      path: '/note',
+      component: NoteDetail
     },
     {
-        path: '/trash/:noteId',
-        component: TrashDetail
+      path: '/trash',
+      component: TrashDetail
     }
-]
-
-const router = new VueRouter({
-    routes
+  ]
 })
-
-export default router
