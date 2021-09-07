@@ -9,15 +9,15 @@
         <div class="book-list">
           <a href="#" class="notebook">
             <div>
-              <span class="iconfont icon-notebook"></span> 笔记本标题1 <span>3</span><span class="action">编辑</span>
-              <span class="action">删除</span>
+              <span class="iconfont icon-notebook"></span> 笔记本标题1 <span>3</span><span class="action" >编辑</span>
+              <span class="action" >删除</span>
               <span class="date">3天前</span>
             </div>
           </a>
           <a href="#" class="notebook">
             <div>
-              <span class="iconfont icon-notebook"></span> 笔记本标题2 <span>1</span><span class="action">编辑</span>
-              <span class="action">删除</span>
+              <span class="iconfont icon-notebook"></span> 笔记本标题2 <span>1</span><span class="action" >编辑</span>
+              <span class="action" >删除</span>
               <span class="date">5天前</span>
             </div>
           </a>
@@ -30,18 +30,21 @@
 </template>
 <script>
 import Auth from '@/apis/auth'
+import Notebooks from '@/apis/notebooks'
+
+//window.Notebooks = Notebooks
 
 export default {
   name: 'Login',
-  data() {
+  data () {
     return {
       msg: '笔记本列表'
     }
   },
   created() {
     Auth.getInfo()
-        .then(res => {
-          if (!res.isLogin) {
+        .then(res=>{
+          if(!res.isLogin) {
             this.$router.push({path: '/login'})
           }
         })
